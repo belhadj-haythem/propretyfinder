@@ -65,10 +65,11 @@ export class FinderComponent implements OnInit {
   }
 
   reset() {
-    this.selectedArrival = '';
+    location.reload();
+    /*this.selectedArrival = '';
     this.selectedDeparture = '';
     this.selectedValue = '0';
-    this.showResult = false;
+    this.showResult = false;*/
   }
   /**
    * Button click, start applying our algorithm
