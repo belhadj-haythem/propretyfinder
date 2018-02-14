@@ -1,0 +1,73 @@
+<div class="container">
+  <img src="../../../assets/img/logo.png" width="500" class="mainlogo">
+    <mat-card class="card-search" *ngIf="!showResult">
+        <mat-card-header>
+          <div mat-card-avatar class="header"></div>
+          <mat-card-title>Travel agency</mat-card-title>
+          <mat-card-subtitle>Easy to book ! Choose your destination</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-form-field>
+                <mat-select placeholder="From" [(value)]="selectedDeparture" >
+                  <mat-option *ngFor="let departureCountry of departureList" value="{{departureCountry}}" >
+                    {{ departureCountry }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="to">
+                  <mat-select [(value)]="selectedArrival" placeholder="To">
+                    <mat-option *ngFor="let arrivalCountry of arrivalList" value="{{arrivalCountry}}" >
+                      {{ arrivalCountry }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              <mat-button-toggle-group  [(ngModel)]="selectedValue" #group="matButtonToggleGroup">
+                    <mat-button-toggle class="toggle" value="1">
+                      <mat-icon>euro_symbol</mat-icon> Cheapest
+                    </mat-button-toggle>
+                    <mat-button-toggle class="toggle" value="2">
+                      <mat-icon>schedule</mat-icon> Fastest
+                    </mat-button-toggle>
+                  </mat-button-toggle-group>
+
+        </mat-card-content>
+        <button (click)="search()" mat-raised-button class="search">
+            <mat-icon>search</mat-icon> Search</button>
+      </mat-card>
+
+      <mat-card class="card-search" *ngIf="showResult" >
+          <button (click)="reset()" mat-raised-button class="search">
+              <mat-icon>cached</mat-icon> Reset</button>
+          <mat-card-header>
+            <div mat-card-avatar class="header"></div>
+            <mat-card-title>Travel agency</mat-card-title>
+            <mat-card-subtitle>Results</mat-card-subtitle>
+
+          </mat-card-header>
+          <mat-card-content>
+                <mat-list>
+                    <mat-list-item *ngFor="let res of finalArrayResult">
+                        <mat-icon mat-list-icon *ngIf="res.transport == 'car'" >directions_car</mat-icon>
+                        <mat-icon mat-list-icon *ngIf="res.transport == 'bus'" >directions_bus</mat-icon>
+                        <mat-icon mat-list-icon *ngIf="res.transport == 'train'" >directions_railway</mat-icon>
+                        <h3 mat-line>{{res.departure}} <mat-icon class="icon">keyboard_arrow_right</mat-icon>
+                          {{res.arrival}}</h3><span class="bold">{{res.cost - ((res.cost * res.discount)/100)}}€</span>
+                        <p mat-line>
+                          <label class="bold">{{res.transport}}</label>
+                          {{res.reference}} for
+                          <label class="bold">{{res.duration.h}}h{{res.duration.m}}</label>
+                        </p>
+                      </mat-list-item>
+                      <br>
+                      <mat-list-item >
+                          <mat-icon mat-list-icon >clear_all</mat-icon>
+                          <h3 mat-line ><span class="bold">Total</span> <mat-icon class="icon-total">query_builder</mat-icon>
+                            <span class="bold">{{totalDuration}}</span>
+                            </h3><span class="bold">{{totalCost}}€</span>
+
+                      </mat-list-item>
+                </mat-list>
+          </mat-card-content>
+      </mat-card>
+</div>

@@ -1,0 +1,39 @@
+.container {
+  height: 100%;
+}
+.mainlogo {
+  margin-left: 75px;
+}
+.card-search {
+  top:40px;
+  left: 100px;
+  max-width: 400px;
+  min-height: 200px;
+}
+.header {
+  background-image: url('../../../assets/img/logo_home.png');
+  background-size: cover;
+}
+.toggle {
+  color: black;
+}
+.to {
+  padding-left: 16px;
+}
+.search {
+  background-color: 	#4FAB4F;
+  color:white;
+  float: right;
+}
+
+.icon {
+  vertical-align: middle;
+}
+.bold {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.icon-total {
+  vertical-align: middle;
+  padding-left: 70px;
+}
